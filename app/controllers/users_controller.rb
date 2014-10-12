@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   end
 
   def thankyou
-    render json: { result: "You have already signed up." }
+    render inline: "You have already signed up.
+                    <%= link_to 'Sign out', sign_out_path %>"
   end
 end
