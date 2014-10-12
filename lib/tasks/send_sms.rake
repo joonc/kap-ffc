@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
-task :ask_morning => :environment do
+task :ask => :environment do
   users = User.all
   twilio = TwilioClient.new
 
-  day_today = Time.now.in_time_zone.wday
   users.each do |u|
-    if u.available_day?(day_today) && !u.mute
+    unless u.mute
       begin
-        twilio.send_morning_sms(u)
+        twilio.send_wednesday_sms(u)
         puts "msg sent to: " + u.full_name
       rescue
         puts "FAILED sending to: " + u.full_name
