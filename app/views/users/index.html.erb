@@ -10,14 +10,6 @@
             <th>Email</th>
             <th>Phone #</th>
             <th>Reply</th>
-            <th class="time-cell">Today</th>
-            <th class="bad-day-cell">S</th>
-            <th class="bad-day-cell">M</th>
-            <th class="bad-day-cell">T</th>
-            <th class="bad-day-cell">W</th>
-            <th class="bad-day-cell">T</th>
-            <th class="bad-day-cell">F</th>
-            <th class="bad-day-cell">S</th>
             <th>Actions</th>
           </tr>
 	</thead>
@@ -35,12 +27,6 @@
                     else
                       "NO"
                     end %></td>
-            <td class="time-cell"><%= user.free_times_today_formatted %></td>
-            <% (0..6).each do |day| %>
-              <td class="bad-day-cell">
-                <%= user.available_day?(day) ? "A" : "U" %>
-              </td>
-            <% end %>
             <td><%= link_to 'Destroy', user_path(user),
                     data: {confirm: "Are you sure you want to delete #{user.full_name}'s account?"},
                     method: :delete %></td>

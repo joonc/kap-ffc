@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get "sign_up", to: "devise/registrations#new"
     get "sign_in", to: "devise/sessions#new"
     get "sign_out", to: "devise/sessions#destroy"
+    get "thankyou", to: "users#thankyou"
   end
 
   resources :users, only: [:index, :show, :destroy] do

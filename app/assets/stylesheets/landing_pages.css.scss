@@ -123,17 +123,6 @@ input {
 
 }
 
-#free-time-info-form {
-    display: none;
-    text-align: center;
-    @include stylish-buttons;
-}
-
-#edit-free-time-info-form {
-    text-align: center;
-    @include stylish-buttons;
-}
-
 #sign-in-form {
  margin-left: auto;
  margin-right: auto;
@@ -170,10 +159,6 @@ input {
 
 #continue-button {
 	margin-left: 23px;
-}
-
-#mobile-message {
-    display: none;
 }
 
 #thankyou-message {

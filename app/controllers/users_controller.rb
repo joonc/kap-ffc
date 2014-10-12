@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :is_admin?, except: [:send_reminder]
+  before_filter :is_admin?, except: [:send_reminder, :thankyou]
 
   def index
     @users = User.all.order("created_at DESC")
@@ -25,5 +25,9 @@ class UsersController < ApplicationController
   def send_reminder
     UserMailer.send_time_input_reminder(current_user).deliver
     render json: { result: "success" }
+  end
+
+  def thankyou
+    render json: { result: "You have already signed up." }
   end
 end

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     if current_user.try(:admin?)
       users_path
     else
-      edit_free_time_path(resource)
+      thankyou_path
     end
   end
 
