@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     if current_user.try(:admin?)
       true
     else
-      return render "users/access_denied"
+      return redirect_to sign_in_path
     end
   end
 end
