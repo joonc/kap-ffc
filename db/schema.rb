@@ -11,26 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924212147) do
+ActiveRecord::Schema.define(version: 20141012182428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bad_dates", force: true do |t|
-    t.integer  "user_id"
-    t.date     "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "free_times", force: true do |t|
-    t.integer  "day"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.decimal  "duration"
-    t.decimal  "time"
-    t.integer  "user_id"
-  end
 
   create_table "sms", force: true do |t|
     t.string   "from"

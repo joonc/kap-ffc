@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get "landing_pages/home"
-  get "bye" => "landing_pages#bye"
   get "twiml" => "smses#twiml"
 
   post "welcome" => "smses#send_welcome_message"
@@ -21,7 +19,5 @@ Rails.application.routes.draw do
       post "toggle_mute"
     end
   end
-  resources :free_times
-  resources :bad_dates
   resources :smses
 end
