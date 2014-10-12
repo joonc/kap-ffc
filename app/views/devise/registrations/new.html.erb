@@ -32,7 +32,7 @@
 </div>
 
 <div id="additional-user-info-form">
-<%= form_for(resource, as: resource_name)  do |f| %>
+<%= form_for "user" do |f| %>
   <h2> Just a bit more. </h2>
   <div><%= f.label :year, id: "user-info-form-label" %><br />
     <%= f.text_field :year, type: "number", placeholder: "2015" %></div>
