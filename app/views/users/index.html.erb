@@ -9,6 +9,8 @@
             <th>Name</th>
             <th>Email</th>
             <th>Phone #</th>
+            <th>Year</th>
+            <th>Team</th>
             <th>Reply</th>
             <th>Actions</th>
           </tr>
@@ -20,6 +22,8 @@
             <td><%= link_to user.full_name, user_path(user) %></td>
             <td><%= user.email %></td>
             <td><%= user.phone_number %></td>
+            <td><%= user.year %></td>
+            <td><%= user.team %></td>
             <td><%= if user.response.nil?
                       "None"
                     elsif user.response
@@ -34,9 +38,6 @@
               <td><%= link_to 'Unmute', toggle_mute_user_path(user), method: :post %></td>
             <% else %>
               <td><%= link_to 'Mute', toggle_mute_user_path(user), method: :post %></td>
-            <% end %>
-            <% unless user.explained  %>
-              <td><%= link_to 'Explain', "send_policy/#{user.id}" %></td>
             <% end %>
           </tr>
           <% end %>
