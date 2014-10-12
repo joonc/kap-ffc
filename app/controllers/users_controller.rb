@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :is_admin?, except: [:send_reminder, :thankyou]
+  before_filter :is_admin?, except: [:send_reminder, :thankyou, :update]
 
   def index
     @users = User.all.order("created_at DESC")
@@ -7,6 +7,15 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def update
+    user = User.find(params[:id])
+    user.year = params[:user][:year]
+    user.team = params[:user][:team]
+    user.fun_fact = params[:user][:fun_fact]
+    user.save
+    render json: { result: "success" }
   end
 
   def destroy

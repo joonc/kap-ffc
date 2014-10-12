@@ -10,7 +10,7 @@ $(document).ready(function() {
 
     $("#continue-button").click(function(e){
         e.preventDefault(); //This prevents the form from submitting normally
-        var user_info = $(this).serializeObject();
+        var user_info = $(this).serializeForm();
         console.log("About to post to /users: " + JSON.stringify(user_info));
         $.ajax({
             type: "POST",
@@ -18,13 +18,9 @@ $(document).ready(function() {
             data: user_info,
             success: function(data){
                 console.log("Response: " + JSON.stringify(data));
+                $("#done-button").data("user-id", data["id"]);
                 $("#user-info-form").hide();
-                if (window.mobile()) {
-                    $("#mobile-message").show();
-                    $.ajax({type: "POST", url: "/reminder"});
-                } else {
-                  $("#free-time-info-form").show();
-                }
+                $("#additional-user-info-form").show();
             },
 	    error: function (data) {
                 var errors = $.parseJSON(data["responseText"])["errors"];
@@ -38,11 +34,40 @@ $(document).ready(function() {
             dataType: "json"
         });
     });
+
+    $("#done-button").click(function(e){
+        e.preventDefault();
+        var user_info = $(this).serializeForm();
+        console.log("About to update to user: " + JSON.stringify(user_info));
+        $.ajax({
+            type: "PUT",
+            url: "/users/"+$(this).data("user-id"),
+            data: user_info,
+            success: function(data){
+                console.log("Response: " + JSON.stringify(data));
+                $("#additional-user-info-form").hide();
+                $("#thankyou-message").show();
+                $.ajax({type: "POST", url: "/welcome"});
+            },
+	    error: function (data) {
+                var errors = $.parseJSON(data["responseText"])["errors"];
+                console.log("Failed: " + JSON.stringify(errors));
+                var msg = "";
+                for (var key in errors) {
+                    msg += "["+key +"]: "+ errors[key]+"\n";
+                }
+		alert("Failed updating user.\n"+msg);
+	    },
+            dataType: "json"
+        });
+    });
+
 });
 
-$.fn.serializeObject = function() {
+$.fn.serializeForm = function() {
+  form_id = "#"+$(this).closest("div")[0].id;
   var values = {}
-  $("form input, form select, form textarea").each( function(){
+  $(form_id+" form input, form select, form textarea").each( function(){
     values[this.name] = $(this).val();
   });
 

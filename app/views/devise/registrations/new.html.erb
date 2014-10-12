@@ -27,7 +27,22 @@
   <div><%= f.label :password, id: "user-info-form-label" %><br />
     <%= f.password_field :password, type: "password", autocomplete: "off", placeholder: "*********" %></div>
 
-  <div><%= link_to "Continue", "#", id: "continue-button", class: "btn" %></div>
+  <%= link_to "Continue", "#", id: "continue-button", class: "btn" %>
+<% end %>
+</div>
+
+<div id="additional-user-info-form">
+<%= form_for(resource, as: resource_name)  do |f| %>
+  <h2> Just a bit more. </h2>
+  <div><%= f.label :year, id: "user-info-form-label" %><br />
+    <%= f.text_field :year, type: "number", placeholder: "2015" %></div>
+
+  <div><%= f.label :team, id: "user-info-form-label" %><br />
+    <%= f.text_field :team, placeholder: "Editorial" %></div>
+
+  <div><%= f.label :fun_fact, id: "user-info-form-label" %><br />
+    <%= f.text_field :fun_fact, placeholder: "I love watching birds." %></div>
+  <%= link_to "Done", "#", id: "done-button", class:"btn"%>
 <% end %>
 </div>
 

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get "thankyou", to: "users#thankyou"
   end
 
-  resources :users, only: [:index, :show, :destroy] do
+  resources :users do
     member do
       post "toggle_mute"
     end

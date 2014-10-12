@@ -103,6 +103,10 @@ body {
  @include stylish-buttons(20px, 20px);
 }
 
+#additional-user-info-form {
+    @extend #user-info-form;
+}
+
 label {
 	font-family: "Roboto" !important;
 	font-weight: 100 !important;
@@ -154,6 +158,10 @@ input {
 
 #continue-button {
 	margin-left: 23px;
+}
+
+#done-button {
+	margin-left: 40px;
 }
 
 #thankyou-message {
