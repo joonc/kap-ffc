@@ -77,6 +77,12 @@ body {
     }
 
     @include stylish-buttons;
+
+    #welcome-message-logo {
+    	height: 25px;
+    	margin-top: 10px;
+    	margin-bottom: 20px;
+    }
 }
 
 #user-info-form {
@@ -111,7 +117,7 @@ label {
 	font-family: "Roboto" !important;
 	font-weight: 100 !important;
 	font-size: 13pt !important;
-	margin-top: 15px;
+	margin-top: 25px;
 	line-height: 0pt;
 }
 
