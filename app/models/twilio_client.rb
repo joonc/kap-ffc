@@ -42,7 +42,7 @@ class TwilioClient
   end
 
   def send_welcome_sms(user)
-    msg = "Hey #{user.first_name}! Welcome to FreeForCoffee (FFC) group within the DP. Here’s what’s next: each Wednesday evening we’ll shoot you a text asking if you’re still free for coffee with another member that Friday between 1:00-3:00. You simply text back a “yes” or a “no.” If you send a “yes”, on Thursday evening you’ll be introduced to another member through GroupMe. Then all you have to do is pick the place to meet sometime between 1-3 Friday. If you say “no” we’ll leave you alone and shoot you another text next Wednesday. If you say “no” three weeks in a row the system will pause your membership so we aren’t spamming you and because the group only works if people make time for it.
+    msg = "Hey #{user.first_name}! Welcome to FreeForCoffee (FFC) group within the DP. Here’s what’s next: each Wednesday evening we’ll shoot you a text asking if you’re free for coffee with another member that Friday between 1:00-3:00. You simply text back a “yes” or a “no.” If you send a “yes”, on Thursday evening you’ll be introduced to another member through GroupMe. Then all you have to do is pick the place to meet sometime between 1-3 Friday. If you say “no” we’ll leave you alone. If you say “no” three weeks in a row the system will pause your membership so we aren’t spamming you and because the group only works if people make time for it.
 
 That’s all for now. Glad to have you as part of the FreeForCoffee group in the DP! Hope you enjoy meeting people."
     send_sms(user.phone_number, msg, false)
