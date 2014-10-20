@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div id="meetups" class="col-md-8 col-md-offset-2">
+      <h1> Past Meetups  </h1>
+      <table class="table table-striped">
+	<tbody>
+          <% @meetups.each do |meetup| %>
+          <tr>
+            <td><%= link_to meetup.user1.full_name, user_path(meetup.user1) %> met with <%= link_to meetup.user2.full_name, user_path(meetup.user2) %></td>
+	    </td>
+          </tr>
+          <% end %>
+	</tbody>
+      </table>
+    </div>
+  </div>
+</div>

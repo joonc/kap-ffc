@@ -1,15 +1,32 @@
-<h2><%= @user.full_name %></h2>
-<h3>Email: <%= @user.email %></h3>
-<h3>Phone #: <%= @user.phone_number %></h3>
-<h3>Year: <%= @user.year %></h3>
-<h3>Team: <%= @user.team %></h3>
-<h3>Fun Fact: <%= @user.fun_fact %></h3>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2><%= @user.full_name %></h2>
+      <% if current_user.try(:admin?) %>
+        <h3>Email: <%= @user.email %></h3>
+        <h3>Phone #: <%= @user.phone_number %></h3>
+      <% end %>
+      <h3>Year: <%= @user.year %></h3>
+      <h3>Team: <%= @user.team %></h3>
+      <h3>Fun Fact: <%= @user.fun_fact %></h3>
 
-<br/>
-<br/>
-Send SMS: <br/>
-<%= form_for :sms, url: smses_path do |f| %>
-  <%= f.hidden_field :to, value: @user.phone_number %>
-  <%= f.text_field :body, id: "sms-body" %>
-  <%= f.submit "Send" %>
-<% end %>
+      <br/>
+      <br/>
+      <% if current_user.try(:admin?) %>
+        Send SMS: <br/>
+        <%= form_for :sms, url: smses_path do |f| %>
+          <%= f.hidden_field :to, value: @user.phone_number %>
+          <%= f.text_field :body, id: "sms-body" %>
+          <%= f.submit "Send" %>
+        <% end %><br>
+
+        <%= form_for :meetup, url: meetups_path do |f| %>
+          This user met with: <br/>
+          <%= f.hidden_field :user1_id, value: @user.id %>
+          <%= f.text_field :user2_email, id: "user2_email", placeholder: "ambitious@whartonite.upenn.edu" %>
+          <%= f.submit "Met" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

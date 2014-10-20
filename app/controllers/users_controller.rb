@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :is_admin?, except: [:send_reminder, :thankyou, :update]
+  before_filter :is_admin?, only: [:index, :destroy, :toggle_mute]
 
   def index
     @users = User.all.order("created_at DESC")

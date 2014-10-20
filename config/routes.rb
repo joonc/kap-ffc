@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post "welcome" => "smses#send_welcome_message"
   get "send_policy/:id" => "smses#send_policy"
   post "reminder" => "users#send_reminder"
+  get "happened" => "meetups#index"
 
   devise_for :users, :controllers => { :registrations => "registrations" }
 
@@ -21,4 +22,5 @@ Rails.application.routes.draw do
     end
   end
   resources :smses
+  resources :meetups
 end
