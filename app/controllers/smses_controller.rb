@@ -41,17 +41,17 @@ class SmsesController < ApplicationController
     from_user = @sms.from_user
 
     # response logic
-    if from_user && from_user.response.nil?
-      if sms[:body].downcase.include?("yes")
-        twilio.respond_to_yes(sms[:from])
-        from_user.response = true
-        from_user.save
-      elsif sms[:body].downcase.include?("no")
-        twilio.send_sms(sms[:from], "Got it. Have a great day!")
-        from_user.response = false
-        from_user.save
-      end
-    end
+    # if from_user && from_user.response.nil?
+    #   if sms[:body].downcase.include?("yes")
+    #     twilio.respond_to_yes(sms[:from])
+    #     from_user.response = true
+    #     from_user.save
+    #   elsif sms[:body].downcase.include?("no")
+    #     twilio.send_sms(sms[:from], "Got it. Have a great day!")
+    #     from_user.response = false
+    #     from_user.save
+    #   end
+    # end
 
     # Empty response to Twilio (Do nothing more)
     render xml: Twilio::TwiML::Response.new.text
